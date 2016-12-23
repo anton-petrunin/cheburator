@@ -22,16 +22,17 @@ urlcolor=black%
 \hypersetup{pdftitle={Блуждания с Марковым},
 pdfauthor={Александр Гиль и Антон Петрунин}}
 
-
-
+\newcommand{\nofootnote}[1]{%
+\begingroup\def\thefootnote{}\footnotetext{#1}\endgroup}
 \begin{document}
 \title{Блуждания с Марковым}
-\author{А. Гиль и А. Петрунин}
+\author{Александр Гиль и Антон Петрунин}
+\nofootnote{Авторы признательны Арсению Акопяну за помощь при составлении этой заметки.}
 \date{}
 \maketitle
 \begin{abstract}
 Заметка основана на лекции прочитанной первым автором в школьном 
-математическом кружке Northwest Academy of Science.
+математическом кружке в Сиэтле, \texttt{www.assagames.com/nas/}.
 \end{abstract}
 
 \section{Вероятность и математические ожидание}
