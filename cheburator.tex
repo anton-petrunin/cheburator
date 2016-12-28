@@ -1,7 +1,6 @@
 \documentclass{article} 
 \usepackage{amssymb, amsfonts, amsmath, amsthm}
 \usepackage{epsfig,lpic,wrapfig}
-\usepackage{fontawesome}
 \usepackage[T2A,T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
@@ -10,7 +9,7 @@
 \usepackage{tikz}
 %\usetikzlibrary{arrows}
 \usetikzlibrary{automata,chains}
-%\usepackage[top=0.9in, bottom=0.9in,left=0.9in, right=0.9in, paperwidth=6in, paperheight=9in]{geometry}
+\usepackage[top=0.9in, bottom=0.9in,left=0.9in, right=0.9in, paperwidth=6in, paperheight=9in]{geometry}
 \usepackage[colorlinks=true,
 citecolor=black,
 linkcolor=black,
@@ -22,10 +21,16 @@ urlcolor=black%
 \hypersetup{pdftitle={Блуждания с Марковым},
 pdfauthor={Александр Гиль и Антон Петрунин}}
 
+\def\man{\includegraphics[scale=.021]{pics/man}}
+\def\dog{\includegraphics[scale=.020]{pics/dog}}
+\def\home{\includegraphics[scale=.021]{pics/home}}
+\def\beer{\includegraphics[scale=.01]{pics/beer}}
+\def\robot{\includegraphics[scale=.1]{pics/robot-icon-30498}}
+
 \newcommand{\nofootnote}[1]{%
 \begingroup\def\thefootnote{}\footnotetext{#1}\endgroup}
 \begin{document}
-\title{Блуждания с Марковым}
+\title{Блужданья по цепям}
 \author{Александр Гиль и Антон Петрунин}
 \nofootnote{Авторы признательны Арсению Акопяну за помощь при составлении этой заметки.}
 \date{}
@@ -92,7 +97,7 @@ pdfauthor={Александр Гиль и Антон Петрунин}}
 
 \begin{wrapfigure}{r}{19 mm}
 \begin{lpic}[t(10 mm),b(0 mm),r(0 mm),l(0 mm)]{pics/stol(1)}
-\lbl[b]{6,4;\includegraphics[scale=.1]{pics/robot-icon-30498}}
+\lbl[b]{6,4;\robot}
 \end{lpic}
 \end{wrapfigure}
 
@@ -169,16 +174,16 @@ $s_1=s_2=2$.
 
 \begin{wrapfigure}{r}{35 mm}
 \begin{lpic}[t(-5 mm),b(-2 mm),r(0 mm),l(0 mm)]{pics/gorod(1)}
-\lbl[br]{6,8;\faHome}
-\lbl[b]{12,17;\faBlind}
-\lbl[lt]{27.5,5.5;\faPaw}
+\lbl[br]{6,8;\home}
+\lbl[b]{12,17;\man}
+\lbl[t]{27.5,5.5;\dog}
 \end{lpic}
 \end{wrapfigure}
 
 \medskip
 \noindent\textbf{Задача.}
-На рисунке вы видите кусок вырезанный из плана города с отмеченными на нём собакой (\faPaw), 
-её забывчивым хозяином (\faBlind) и их домом (\faHome).
+На рисунке вы видите кусок вырезанный из плана города с отмеченными на нём собакой (\dog), 
+её забывчивым хозяином (\man) и их домом (\home).
 
 Хозяин ищет свой дом, 
 выбирая с равной вероятности одну из сходящихся на перекрёстке дорог, 
@@ -235,7 +240,7 @@ p_2=(\tfrac12)^1+(\tfrac12)^3+(\tfrac12)^5+\dots
 
 \begin{center}
 \begin{lpic}[t(15 mm),b(0 mm),r(2 mm),l(1 mm)]{pics/dlinnyj-stol(1)}
-\lbl[b]{14.75,4;\includegraphics[scale=.1]{pics/robot-icon-30498}}
+\lbl[b]{14.75,4;\robot}
 \lbl[b]{-.5,4;$\curvearrowleft$}
 \lbl[b]{5.5,4;$\curvearrowleft$}
 \lbl[b]{11.5,4;$\curvearrowleft$}
@@ -328,9 +333,9 @@ $s_i=i\cdot j$.
 
 \begin{center}
 \begin{lpic}[t(0 mm),b(0 mm),r(0 mm),l(2 mm)]{pics/bar(1)}
-\lbl[l]{103.5,2;\faHome}
-\lbl[b]{12.5,4;\faBlind}
-\lbl[r]{.5,2;\faBeer}
+\lbl[l]{103.5,2;\home}
+\lbl[b]{12,4;\man}
+\lbl[r]{.5,2;\beer}
 \end{lpic}
 \end{center}
 
@@ -378,7 +383,9 @@ $s_i=i\cdot j$.
 Вероятность этого события (обозначим это число $p$) мала,
 но вероятность того, что за достаточно длинный промежуток времени найдутся такие 10 минут, в пределе равна 1. 
 
-Действительно, вероятность противоположного исхода (того, что после 10-ти минут в пробирке будут потомки более чем одной из первоначально находившихся там бактерий) равна $1-p$, и это число меньше 1. Значит, вероятность того, что никакой из $n$ последовательных 10-минутных интервалов не завершился тем, что в пробирке остались только потомки одной из бактерий, бывших в пробирке в начале этого интервала, равна $(1-p)^n$. При увеличивающемся $n$ это число приближается сколь угодно близко к нолю, значит, предельная вероятность того, что рано или поздно такой 10-минутный интервал случится --- при неограниченном увеличении времени ожидания такого интервала --- равна 1. 
+Действительно, вероятность противоположного исхода (того, что после 10-ти минут в пробирке будут потомки более чем одной из первоначально находившихся там бактерий) равна $1-p$, и это число меньше 1. 
+Значит, вероятность того, что никакой из $n$ последовательных 10-минутных интервалов не завершился тем, что в пробирке остались только потомки одной из бактерий, бывших в пробирке в начале этого интервала, равна $(1-p)^n$. 
+При увеличивающемся $n$ это число приближается сколь угодно близко к нолю, значит, предельная вероятность того, что рано или поздно такой 10-минутный интервал случится --- при неограниченном увеличении времени ожидания такого интервала --- равна 1. 
 
 При этом в самом начале каждая из десяти бактерий 
 имеет равные шансы на то, чтобы стать прародителем всех выживших.
